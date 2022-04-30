@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css?family=Dosis:400,500,700|Quicksand:400,700|Raleway:300,300i,400,400i,700,800,900');
+
+html, body{
+	margin : 0px;
+	padding : 0px;
+	#background-color: darkblue;
+}
+
+* {
+    box-sizing : border-box;
+}
+
+.entetesite{
+	#background-color: black;
+	background-image: url(pp.jpg);
+	background-repeat: no-repeat;
+	padding : 50px;
+    background-size: 100%;
+}
+
+.entetesite h1 {
+    color : red;
+    font-family : Raleway, sans-serif;
+	width : 400px;
+	text-align: center;
+	#background-color: antiquewhite;
+	#opacity: 0.8;
+	margin : 0px auto 0px;
+}
+
+.entetesite nav a{
+    display : inline-block;
+    width : calc( 100% / 3 - 10px);
+    margin-right : 5px;
+    background-color: blue;
+    text-align : center;
+    text-decoration : none;
+    color : darkblue;
+    font-size : 1.2em;
+}
+.entetesite nav a:first-child{
+margin-left : 2.5px;
+}
+.entetesite nav a:last-child{
+margin-right : 0px;
+}
+
+h1 {
+text-align : center;
+}

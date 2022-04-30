@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+{% load static %}
+<link rel="stylesheet" href="{% static 'mpla/style.css' %}">
+<title>{% block title %}Mon Sit45645e {% endblock %} </title>
+</head>
+<body>
+<header class="entetesite">
+    <h1> </h1>
+    <nav><a href="index"> Accueil </a><a href="/mpla/ajout"> Galaxie </a><a href=""> planete </a></nav>
+</header>
+<div class="main">
+    {% block content %}
+        <h1> bloc de contenu </h1>
+    {% endblock%}
+</div>
+</body>
+</html>
