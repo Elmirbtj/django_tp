@@ -13,3 +13,17 @@ class MplaForm(ModelForm):
 
 
         }
+
+
+class PlaForm(ModelForm):
+
+    class Meta:
+        model = models.Pla
+        fields = ('titre', 'nom', 'date_de_decouverte',)
+        labels = {
+            'titre' : _('Titre'),
+            'nom' : _('Nom') ,
+            'date_de_decouverte' : _('Date_de_decouverte'),
+
+
+        }

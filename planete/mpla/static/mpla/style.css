@@ -12,10 +12,12 @@ html, body{
 
 .entetesite{
 	#background-color: black;
-	background-image: url(pp.jpg);
+	#background-image: url(pp.jpg);
+	background: #3E454C;
 	background-repeat: no-repeat;
 	padding : 50px;
     background-size: 100%;
+
 }
 
 .entetesite h1 {
@@ -47,4 +49,39 @@ margin-right : 0px;
 
 h1 {
 text-align : center;
+}
+
+
+
+.pcimg {
+	display: block;
+	border: 0;
+  margin: auto;
+	width: 60%;
+	height: 350px;
+}
+
+
+.pc {
+	padding: 10em;
+	background-image: url(pp.jpg);
+	background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.pc ul {
+	margin: 0;
+	padding: 0;
+}
+
+.pc li {
+	margin-bottom: 1em;
+	background: white;
+	list-style-type: none;
+}
+
+.carrer {
+	padding: 5em;
+
 }

@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .forms import MplaForm
+from .forms import PlaForm
 from . import models
 from django.http import HttpResponse
 
@@ -17,6 +18,32 @@ def ajout(request):
         form = MplaForm()
         return render(request,"mpla/ajout.html",{"form" : form})
 
+def planete(request):
+    if request.method == "POST":
+
+        form = PlaForm(request)
+        if form.is_valid():
+            pla = form.save()
+            return render(request,"/mpla/affiche2.html",{"pla" : pla})
+
+        else:
+            return render(request,"mpla/planete.html",{"form": form})
+    else :
+        form = PlaForm()
+        return render(request,"mpla/planete.html",{"form" : form})
+
+def affiche2(request, id):
+    pla = models.Pla.objects.get(pk=id)
+
+    return render(request,"mpla/affiche2.html",{"pla": pla})
+
+def traitement2(request):
+    mform = PlaForm(request.POST)
+    if mform.is_valid():
+        pla = mform.save()
+        return render(request,"mpla/affiche2.html",{"pla" : pla})
+    else:
+        return render(request,"mpla/planete.html",{"form": mform})
 
 def home(request):
     return render(request, 'mpla/home.html')
@@ -25,7 +52,7 @@ def traitement(request):
     lform = MplaForm(request.POST)
     if lform.is_valid():
         mpla = lform.save()
-        return render(request,"/mpla/affiche.html",{"mpla" : mpla})
+        return render(request,"mpla/affiche.html",{"mpla" : mpla})
     else:
         return render(request,"mpla/ajout.html",{"form": lform})
 
@@ -44,7 +71,7 @@ def traitementupdate(request, id):
 
         mpla.id = id ;
         mpla.save()
-        return HttpResponseRedirect("/mpla/")
+        return HttpResponseRedirect("/mpla")
     else:
         return render(request, "mpla/update.html", {"form": lform, "id": id})
 
