@@ -6,5 +6,13 @@
 </head>
 <body>
 
+<button name="button"><a href="ajout/"> ajouter un livre </a></button>
+ <ol>
+        {% for l in liste %}
+            <li> {{l}} date de parution {{l.date_de_decouverte|date:"d/m/Y"}} <button name="button"><a href="affiche/{{l.id}}"> afficher les détails | </a></button> <button name="button"><a href="delete/{{l.id}}"> effacer | </a></button>
+                <button name="button"><a href="update/{{l.id}}"> update </a></button></li>
+        {%endfor%}
+    </ol>
+
 </body>
 </html>

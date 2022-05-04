@@ -20,11 +20,14 @@
                           <img src="" class="pcimg">
                           <div class="carrer">
                             <u><h3 class="catitre">Titre</h3></u>
-                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni odit rerum exercitationem quaerat quis voluptate asperiores! Eligendi, soluta. Quaerat adipisci maos recusandae nobis distinctio nisi
 
-                             </p>
-                             <p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni odit rerum exercitationem quaerat quis voluptate asperiores! Eligendi, soluta. Quaerat adipisci maos recusandae nobis distinctio nisi</p>
-                          </div>
+                        <ol>
+                            {% for l in liste %}
+                                <li> {{l}} date de parution {{l.date_de_decouverte|date:"d/m/Y"}} <button name="button"><a href="/mpla/affiche/{{l.id}}"> afficher les détails | </a></button> <button name="button"><a href="/mpla/delete/{{l.id}}"> effacer | </a></button>
+                            <button name="button"><a href="/mpla/"> update </a></button></li>
+                            {%endfor%}
+                        </ol>
+                            </div>
                         </li>
                         <li>
                           <img src="" class="pcimg">

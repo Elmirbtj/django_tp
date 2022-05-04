@@ -13,6 +13,7 @@ class MplaForm(ModelForm):
 
 
         }
+        localized_fields = ('date_de_decouverte',)
 
 
 class PlaForm(ModelForm):

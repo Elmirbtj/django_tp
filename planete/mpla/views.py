@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .forms import MplaForm
 from .forms import PlaForm
 from . import models
-from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 
 def ajout(request):
     if request.method == "POST":
@@ -17,6 +17,16 @@ def ajout(request):
     else :
         form = MplaForm()
         return render(request,"mpla/ajout.html",{"form" : form})
+
+def delete(request, id):
+    mpla = models.Mpla.objects.get(pk=id)
+    mpla.delete()
+    return HttpResponseRedirect("/mpla/home")
+
+def Galaxie(request):
+    liste = list(models.Mpla.objects.all())
+    return render(request, 'mpla/Galaxie.html', {'liste': liste})
+
 
 def planete(request):
     if request.method == "POST":
@@ -45,14 +55,32 @@ def traitement2(request):
     else:
         return render(request,"mpla/planete.html",{"form": mform})
 
+def delete2(request, id):
+    pla = models.Pla.objects.get(pk=id)
+    pla.delete()
+    return HttpResponseRedirect("/mpla/affiche")
+
+
+def traitementupdate2(request, id):
+    mform = PlaForm(request.POST)
+    if mform.is_valid():
+        pla = lform.save(commit=False)
+
+        pla.id = id ;
+        pla.save()
+        return HttpResponseRedirect("/mpla/planete")
+    else:
+        return render(request, "mpla/update.html", {"form": mform, "id": id})
+
 def home(request):
-    return render(request, 'mpla/home.html')
+    liste = list(models.Mpla.objects.all())
+    return render(request, 'mpla/home.html', {'liste': liste})
 
 def traitement(request):
     lform = MplaForm(request.POST)
     if lform.is_valid():
         mpla = lform.save()
-        return render(request,"mpla/affiche.html",{"mpla" : mpla})
+        return HttpResponseRedirect("/mpla/home")
     else:
         return render(request,"mpla/ajout.html",{"form": lform})
 
@@ -71,7 +99,13 @@ def traitementupdate(request, id):
 
         mpla.id = id ;
         mpla.save()
-        return HttpResponseRedirect("/mpla")
+        return HttpResponseRedirect("/mpla/ajout")
     else:
         return render(request, "mpla/update.html", {"form": lform, "id": id})
+
+
+def update(request, id):
+    mpla = models.Mpla.objects.get(pk=id)
+    lform = MplaForm(mpla.dico())
+    return render(request, "mpla/update.html", {"form": lform,"id":id})
 
