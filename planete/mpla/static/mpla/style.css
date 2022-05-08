@@ -1,4 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Dosis:400,500,700|Quicksand:400,700|Raleway:300,300i,400,400i,700,800,900');
+
+*{ font-weight:1;
+font-family:system-ui,arial;
+color:white;}
 
 html, body{
 	margin : 0px;
@@ -156,10 +159,15 @@ img {
 }
 
 
-input[type=submit],button,a{
-    background:;
+
+input[type=submit],button{
+    background:#2f4a28;
     font-family:system-ui,arial;
+}
+
+input[type=text],input[type=number],textarea,select,option{
     color:black;
+    font-family:system-ui,arial;
 }
 
 form{
@@ -182,19 +190,19 @@ list-style-type:none;
     flex-direction:column;
     align-items:center;
     padding:7px;
-    
+
 
 }
 
 .ul1{
-    background-color:darkblue;
+    background-color:	#404040;
   margin-top:50px;
     flex-direction:column;
     align-items:center;
     margin-top:10px;
     width:50vw;
     border-radius:5px;
-    box-shadow:1px 1px 1px 1px #558549;
+    box-shadow:1px 1px 1px 1px #A9A9A9;
 
 }
 
@@ -213,11 +221,7 @@ flex-direction:column;
  align-items:center;
   }
 
-.stars {
- background: black url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/stars.png) repeat;
-height: 100vh;
 
-}
 
 
 

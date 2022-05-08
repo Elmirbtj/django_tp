@@ -1,6 +1,11 @@
 
     {% extends "mpla/main.html" %}
+
 {%block content %}
+    <style>
+{% load static %}
+body{background:url({% static 'mpla/stars.png' %});background-color:black;}
+</style>
 
 <form method="post"  enctype="multipart/form-data" action="/mpla/traitement/">
 

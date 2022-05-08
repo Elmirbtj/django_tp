@@ -12,7 +12,10 @@
 {% block content %}
 
 
-
+<style>
+{% load static %}
+body{background:url({% static 'mpla/stars.png' %});background-color:black;}
+</style>
 
  {% for l in liste %}
 
@@ -27,8 +30,10 @@
 
 
     <li class="li1">
-        {{l.taille_s}} {{l.vitesse}} {{l.type}}
-{{l.distance}} <br>{{l.date_de_decouverte|date:"d/m/Y"}}  <button name="button"><a href="/mpla/affiche/{{l.id}}"> afficher les détails | </a></button> <button name="button"><a href="/mpla/delete/{{l.id}}"> effacer | </a></button>
+      {{l.type}} <br> {{l.taille_s}}{{l.vitesse}}<br>{{l.distance}} <br>{{l.date_de_decouverte|date:"d/m/Y"}}
+
+        <button name="button"><a href="/mpla/affiche/{{l.id}}"> afficher les détails | </a></button> <br>
+        <button name="button"><a href="/mpla/delete/{{l.id}}"> effacer | </a></button> <br>
 <button name="button"><a href="/mpla/update/{{l.id}}"> update </a></button>   </li>
 
 
