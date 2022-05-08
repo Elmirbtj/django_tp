@@ -1,31 +1,73 @@
 from django.shortcuts import render
-from .forms import MplaForm
+from .forms import GalaxieForm
 from .forms import PlaForm
 from . import models
 from django.http import HttpResponseRedirect
 
+
+
 def ajout(request):
     if request.method == "POST":
 
-        form = MplaForm(request)
+        form = GalaxieForm(request)
         if form.is_valid():
-            mpla = form.save()
-            return render(request,"/mpla/affiche.html",{"mpla" : mpla})
+            galaxie = form.save()
+            return render(request,"/mpla/affiche.html",{"galaxie" : galaxie})
 
         else:
             return render(request,"mpla/ajout.html",{"form": form})
     else :
-        form = MplaForm()
+        form = GalaxieForm()
         return render(request,"mpla/ajout.html",{"form" : form})
 
+
+
 def delete(request, id):
-    mpla = models.Mpla.objects.get(pk=id)
-    mpla.delete()
+    galaxie = models.Galaxie.objects.get(pk=id)
+    galaxie.delete()
     return HttpResponseRedirect("/mpla/home")
 
 def Galaxie(request):
-    liste = list(models.Mpla.objects.all())
+    liste = list(models.Galaxie.objects.all())
     return render(request, 'mpla/Galaxie.html', {'liste': liste})
+
+def home(request):
+    liste = list(models.Galaxie.objects.all())
+
+    return render(request, 'mpla/home.html', {'liste': liste} )
+
+def traitement(request):
+    form = GalaxieForm(request.POST, request.FILES)
+    if form.is_valid():
+        galaxie = form.save()
+        return HttpResponseRedirect("/mpla/home")
+    else:
+        return render(request,"mpla/ajout.html",{"form": form})
+
+
+def affiche(request, id):
+    galaxie = models.Galaxie.objects.get(pk=id)
+    liste2 = list(models.Pla.objects.filter(galaxie_id = id))
+    return render(request,"mpla/affiche.html",{"galaxie": galaxie,'liste2' :liste2})
+
+
+
+def traitementupdate(request, id):
+    gform = GalaxieForm(request.POST, request.FILES)
+    if gform.is_valid():
+        galaxie = gform.save(commit=False)
+        galaxie.id = id
+        galaxie.save()
+        return HttpResponseRedirect("/mpla/ajout")
+    else:
+        return render(request, "mpla/update.html", {"form": gform, "id": id})
+
+
+def update(request, id):
+    galaxie = models.Galaxie.objects.get(pk=id)
+    gform = GalaxieForm(galaxie.dico())
+    return render(request, "mpla/update.html", {"form": gform,"id":id})
+
 
 
 def planete(request):
@@ -48,12 +90,12 @@ def affiche2(request, id):
     return render(request,"mpla/affiche2.html",{"pla": pla})
 
 def traitement2(request):
-    mform = PlaForm(request.POST)
-    if mform.is_valid():
-        pla = mform.save()
-        return render(request,"mpla/affiche2.html",{"pla" : pla})
+    pform = PlaForm(request.POST, request.FILES)
+    if pform.is_valid():
+        pla = pform.save()
+        return HttpResponseRedirect("/mpla/home")
     else:
-        return render(request,"mpla/planete.html",{"form": mform})
+        return render(request,"mpla/planete.html",{"form": pform})
 
 def delete2(request, id):
     pla = models.Pla.objects.get(pk=id)
@@ -62,50 +104,19 @@ def delete2(request, id):
 
 
 def traitementupdate2(request, id):
-    mform = PlaForm(request.POST)
-    if mform.is_valid():
-        pla = lform.save(commit=False)
+    pform = PlaForm(request.POST, request.FILES)
+    if pform.is_valid():
+        pla = mform.save(commit=False)
 
-        pla.id = id ;
+        pla.id = id
         pla.save()
         return HttpResponseRedirect("/mpla/planete")
     else:
-        return render(request, "mpla/update.html", {"form": mform, "id": id})
+        return render(request, "mpla/update.html", {"pform": pform, "id": id})
 
-def home(request):
-    liste = list(models.Mpla.objects.all())
-    return render(request, 'mpla/home.html', {'liste': liste})
+def update2(request, id):
+    pla = models.Pla.objects.get(pk=id)
+    pform = PlaForm(pla.dico())
+    return render(request, "mpla/update2.html", {"form": pform,"id":id})
 
-def traitement(request):
-    lform = MplaForm(request.POST)
-    if lform.is_valid():
-        mpla = lform.save()
-        return HttpResponseRedirect("/mpla/home")
-    else:
-        return render(request,"mpla/ajout.html",{"form": lform})
-
-
-def affiche(request, id):
-    mpla = models.Mpla.objects.get(pk=id)
-
-    return render(request,"mpla/affiche.html",{"mpla": mpla})
-
-
-
-def traitementupdate(request, id):
-    lform = MplaForm(request.POST)
-    if lform.is_valid():
-        mpla = lform.save(commit=False)
-
-        mpla.id = id ;
-        mpla.save()
-        return HttpResponseRedirect("/mpla/ajout")
-    else:
-        return render(request, "mpla/update.html", {"form": lform, "id": id})
-
-
-def update(request, id):
-    mpla = models.Mpla.objects.get(pk=id)
-    lform = MplaForm(mpla.dico())
-    return render(request, "mpla/update.html", {"form": lform,"id":id})
 

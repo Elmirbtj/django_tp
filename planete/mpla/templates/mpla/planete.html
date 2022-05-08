@@ -8,9 +8,11 @@
 {%block content %}
 </head>
 <body>
-<form method="post" action="/mpla/traitement2/">
+<form method="post"  enctype="multipart/form-data" action="/mpla/traitement2/">
+
 {% csrf_token %}
-{{ form.as_ul }}
+
+{{ form.as_p }}
 <input type="submit" value="envoyer␣les␣données"\>
 </form>
 </body>

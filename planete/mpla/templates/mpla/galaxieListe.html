@@ -2,15 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Hotel_image</title>
 </head>
 <body>
-<a href="ajout/"> ajouter un livre </a>
- <ol>
-        {% for l in liste %}
-            <li> {{l}} date de parution {{l.date_de_decouverte|date:"d/m/Y"}} <a href="affiche/{{l.id}}"> afficher les détails </a> <a href="delete/{{l.id}}"> effacer </a>
-                <a href="update/{{l.id}}"> mise à jour </a></li>
-        {%endfor%}
-    </ol>
+    <form action="" method =POST enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload</button>
+    </form>
 </body>
 </html>

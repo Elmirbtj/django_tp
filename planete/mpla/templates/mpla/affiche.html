@@ -1,17 +1,58 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<title>hjkhjhj</title>
+
+
      {% extends "mpla/main.html" %}
-</head>
-{%block content %}
-<body>
-<h1> {{mpla.titre}} </h1>
-<p>  {{mpla.auteur}} ...... {{mpla.date_de_decouverte}}.  {{mpla.nom}} </p>
 
 
-</body>
+{% block navi %}
+ <li class="li2"> <a href="/mpla/planete"> planete </a></li>
+{% endblock %}
 
-</html>
+{% block content %}
+
+
+<style>
+{% load static %}
+body{background:url({% static 'mpla/stars.png' %});background-color:black;}
+</style>
+
+
+                            {% if mpla.image_galaxie %}
+                            <img src="{{mpla.image_galaxie.url}}"  width=500>
+
+                            {% endif %}
+
+
+
+
+
+
+
+
+
+  {% for l in liste2 %}
+
+
+        <div class=flexible>
+          <div>
+          <h2>{{l.nom}}</h2>
+            {{l.nom}} <br> {{l.date_de_decouverte|date:"d/m/Y"}}
+
+              <br>
+              {{l.vitesse}}
+              {{l.nom}}
+              {{l.nom}}
+              <button name="button"><a href="/mpla/delete2/{{l.id}}"> effacer | </a></button>
+                            <button name="button"><a href="/mpla/update2/{{l.id}}"> update </a></button>
+          </div>
+{% if l.image_planete %}
+          <div>
+          <img src="{{l.image_planete.url}} "  width=500>
+{% endif %}       </div>
+      </div>
+
+      <div class="clearboth"></div>
+      <aside class="hh"></aside>
+ {%endfor%}
+
+
 {% endblock %}

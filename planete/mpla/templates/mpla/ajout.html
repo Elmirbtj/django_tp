@@ -1,19 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% extends "mpla/main.html" %}
 
-<meta charset="UTF-8">
-<title>Title</title>
+    {% extends "mpla/main.html" %}
 {%block content %}
-</head>
-<body>
-<form method="post" action="/mpla/traitement/">
+
+<form method="post"  enctype="multipart/form-data" action="/mpla/traitement/">
+
 {% csrf_token %}
-{{ form.as_ul }}
+
+{{ form.as_p }}
+<select>
+    <option> Les galaxies spirales </option>
+    <option>Les galaxies lenticulaires </option>
+    <option> Les galaxies elliptiques</option>
+
+
+
+
+</select>
 
 <input type="submit" value="envoyer␣les␣données"\>
 </form>
-</body>
-</html>
+
+
 {% endblock %}
