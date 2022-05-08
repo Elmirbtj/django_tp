@@ -1,13 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+
     {% extends "mpla/main.html" %}
 
-<meta charset="UTF-8">
-<title>Title</title>
+
 {%block content %}
-</head>
-<body>
+<style>
+{% load static %}
+body{background:url({% static 'mpla/stars.png' %});background-color:black;}
+</style>
 <form method="post"  enctype="multipart/form-data" action="/mpla/traitement2/">
 
 {% csrf_token %}
@@ -15,6 +14,5 @@
 {{ form.as_p }}
 <input type="submit" value="envoyer␣les␣données"\>
 </form>
-</body>
-</html>
+
 {% endblock %}

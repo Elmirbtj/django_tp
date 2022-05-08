@@ -20,7 +20,7 @@ urlpatterns = [
     path('traitement2/', views.traitement2),
     path('affiche2/<int:id>',views.affiche2),
     path("delete2/<int:id>", views.delete2),
-    path("update2/<int:id>",views.update),
+    path("update2/<int:id>",views.update2),
 
 
 

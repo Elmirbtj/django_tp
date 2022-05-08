@@ -100,7 +100,7 @@ def traitement2(request):
 def delete2(request, id):
     pla = models.Pla.objects.get(pk=id)
     pla.delete()
-    return HttpResponseRedirect("/mpla/affiche")
+    return HttpResponseRedirect(f"/mpla/affiche/{pla.galaxie_id}")
 
 
 def traitementupdate2(request, id):
