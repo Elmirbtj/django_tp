@@ -11,12 +11,12 @@ class GalaxieForm(ModelForm):
 
     class Meta:
         model = models.Galaxie
-        fields = ('nom', 'date_de_decouverte','image_galaxie', 'distance','taille_s','type' )
+        fields = ('nom', 'date_de_decouverte','image_galaxie', 'distance','taille_s','type',)
         labels = {
             'nom' : _('Nom') ,
-            'date_de_decouverte' : _('Date_de_decouverte'),
+            'date_de_decouverte' : _('Date de decouverte'),
 
-            'distance': _('Distance'),
+            'distance': _('Distance en fonction du systéme solaire'),
             'taile_s': _('Taille de la galaxie'),
             'type': _('Type de la galaxie'),
             'image_galaxie': '',
@@ -28,9 +28,9 @@ class PlaForm(ModelForm):
 
     class Meta:
         model = models.Pla
-        fields = ('nom', 'date_de_decouverte', 'galaxie', 'image_planete', 'vitesse', 'taille', 'categorie',)
+        fields = ('nom', 'date_de_decouverte',  'image_planete', 'vitesse', 'taille', 'categorie',)
         labels = {
-            'galaxie' : _('Galaxie'),
+
             'nom' : _('Nom') ,
             'date_de_decouverte' : _('Date_de_decouverte'),
 

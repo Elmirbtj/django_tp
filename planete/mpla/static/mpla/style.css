@@ -139,12 +139,6 @@ img {
 
 
 
-@media screen and (max-width: 1000px) {
-    .flexible , .hh {
-      flex-direction: column;
-      margin: 10px;
-    }
-}
 
 
 .fond {
@@ -170,7 +164,7 @@ input[type=text],input[type=number],textarea,select,option{
 }
 
 form{
-    background-color:#6eaa5e;
+     background-color:	#404040;
     display:flex;
     justify-content:center;
     flex-direction:column;
@@ -224,3 +218,10 @@ flex-direction:column;
 
 
 
+
+@media screen and (max-width: 1000px) {
+    .flexible , .hh {
+      flex-direction: column;
+      margin: 10px;
+    }
+}

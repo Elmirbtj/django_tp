@@ -4,9 +4,9 @@ class Galaxie(models.Model):
 
     nom = models.CharField(max_length = 100)
     date_de_decouverte = models.DateField(blank=True, null = True)
-    Les_galaxies_spirales='FR'
-    Les_galaxies_lenticulaires ='L'
-    Les_galaxies_elliptiques='E'
+    Les_galaxies_spirales='Les galaxies spirales'
+    Les_galaxies_lenticulaires ='Les galaxies lenticulaires'
+    Les_galaxies_elliptiques='Les galaxies elliptiques'
     distance = models.CharField(max_length = 100)
     taille_s = models.CharField(max_length=100, null = True)
     TYPE_CHOICES = [
@@ -17,7 +17,7 @@ class Galaxie(models.Model):
 
     ]
 
-    type = models.CharField( max_length=2,
+    type = models.CharField( max_length=40,
         choices=TYPE_CHOICES,
         default=Les_galaxies_spirales,)
     image_galaxie = models.ImageField(upload_to="images")

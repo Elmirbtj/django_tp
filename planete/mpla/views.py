@@ -34,7 +34,7 @@ def Galaxie(request):
 def home(request):
     liste = list(models.Galaxie.objects.all())
 
-    return render(request, 'mpla/home.html', {'liste': liste} )
+    return render(request, 'mpla/home.html', {'liste': liste,})
 
 def traitement(request):
     form = GalaxieForm(request.POST, request.FILES)
@@ -72,11 +72,14 @@ def update(request, id):
 
 def planete(request):
     if request.method == "POST":
-
+        galaxie = models.Galaxie.objects.get(pk=id)
         form = PlaForm(request)
         if form.is_valid():
-            pla = form.save()
-            return render(request,"/mpla/affiche2.html",{"pla" : pla})
+            planete = pform.save(commit=False)
+            planete.Galaxie = galaxie
+            planete.Galaxie_id = id
+            planete.save()
+            return render(request,"/mpla/affiche.html",{"planete" : planete})
 
         else:
             return render(request,"mpla/planete.html",{"form": form})
@@ -85,15 +88,20 @@ def planete(request):
         return render(request,"mpla/planete.html",{"form" : form})
 
 def affiche2(request, id):
-    pla = models.Pla.objects.get(pk=id)
+    galaxie = models.Galaxie.objects.get(pk=id)
+    liste2 = list(models.Pla.objects.filter(galaxie_id = id))
+    return render(request,"mpla/home.html",{"galaxie": galaxie,'liste2' :liste2})
 
-    return render(request,"mpla/affiche2.html",{"pla": pla})
 
-def traitement2(request):
+def traitement2(request, id):
     pform = PlaForm(request.POST, request.FILES)
+    galaxie = models.Galaxie.objects.get(pk=id)
     if pform.is_valid():
-        pla = pform.save()
-        return HttpResponseRedirect("/mpla/home")
+        planete = pform.save(commit=False)
+        planete.Galaxie = galaxie
+        planete.Galaxie_id = id
+        planete.save()
+        return HttpResponseRedirect("/mpla/affiche",{"id":id})
     else:
         return render(request,"mpla/planete.html",{"form": pform})
 
