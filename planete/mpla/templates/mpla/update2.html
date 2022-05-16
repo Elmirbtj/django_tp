@@ -6,9 +6,9 @@
 body{background:url({% static 'mpla/stars.png' %});background-color:black;}
 </style>
 
-    <form method="post" action="/mpla/traitementupdate2{{id}}">
+    <form method="post" action="/mpla/traitementupdate2/{{id}}">
         {% csrf_token %}
-     {{ form.as_p }}
+     {{ pform.as_p }}
 
         <input type="submit" value="envoyer les données"\>
     </form>

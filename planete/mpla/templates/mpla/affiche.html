@@ -4,7 +4,7 @@
 
 
 {% block navi %}
- <li class="li2"> <a href="/mpla/planete"> planete </a></li>
+ <li class="li2"> <a href="/mpla/planete/{{galaxie.id}}"> planete </a></li>
 {% endblock %}
 
 {% block content %}
@@ -15,36 +15,7 @@
 body{background:url({% static 'mpla/stars.png' %});background-color:black;}
 </style>
 
- {% for l in liste %}
 
-
- {% if l.image_galaxie %}
-
-
-<ul class="ul1">
-<h1>   {{l.nom}}</h1>
-<img src="{{l.image_galaxie.url}} " class="pcimg">
-{% endif %}
-
-
-    <li class="li1">
-     type: {{l.type}} <br> Taille :{{l.taille_s}}<br> Distance par rapport au systeme solaire:{{l.distance}} <br> Date de decouverte :{{l.date_de_decouverte|date:"d/m/Y"}}
-
-        <button name="button"><a href="/mpla/affiche/{{l.id}}"> afficher les détails | </a></button> <br>
-        <button name="button"><a href="/mpla/delete/{{l.id}}"> effacer | </a></button> <br>
-<button name="button"><a href="/mpla/update/{{l.id}}"> update </a></button>   </li>
-
-<p> le systeme {{pla}} (ceci et le id {{pla.id}} )</p>
-
-</ul>
-
-  {%endfor%}
-
-
-
-
-
-     <h1> {{galaxie.nom}}</h1>
 
  {% if galaxie.image_galaxie %}
 
@@ -56,13 +27,11 @@ body{background:url({% static 'mpla/stars.png' %});background-color:black;}
 
 
     <li class="li1">
-     type: {{galaxie.type}} <br> Taille :{{galaxie.taille_s}}<br> Distance par rapport au systeme solaire:{{galaxie.distance}} <br> Date de decouverte :{{galaxie.date_de_decouverte|date:"d/m/Y"}}
+     type: {{galaxie.type}} <br> Taille :{{galaxie.taille_s}}<br>Date de decouverte :{{galaxie.date_de_decouverte|date:"d/m/Y"}}
+    <br>Resume: {{l.resume}}
 
-        <button name="button"><a href="/mpla/affiche/{{l.id}}"> afficher les détails | </a></button> <br>
-        <button name="button"><a href="/mpla/delete/{{l.id}}"> effacer | </a></button> <br>
-<button name="button"><a href="/mpla/update/{{l.id}}"> update </a></button>   </li>
 
-<p> le systeme {{pla}} (ceci et le id {{pla.id}} )</p>
+
 
 </ul>
 
@@ -88,12 +57,14 @@ body{background:url({% static 'mpla/stars.png' %});background-color:black;}
         <div class=flexible>
           <div>
           <h2>{{l.nom}}</h2>
-            {{l.nom}} <br> {{l.date_de_decouverte|date:"d/m/Y"}}
-
+             <br> {{l.date_de_decouverte|date:"d/m/Y"}}
               <br>
-              {{l.vitesse}}
-              {{l.nom}}
-              {{l.id}}
+              Vitesse de rotation: {{l.vitesse}}
+             <br>
+              Taille: {{l.taille}} <br>
+              Categorie :  {{l.categorie}}
+              <br>Resume: {{l.resume}}
+                <br>
               <button name="button"><a href="/mpla/delete2/{{l.id}}"> effacer | </a></button>
                             <button name="button"><a href="/mpla/update2/{{l.id}}"> update </a></button>
           </div>
@@ -106,21 +77,6 @@ body{background:url({% static 'mpla/stars.png' %});background-color:black;}
       <div class="clearboth"></div>
       <aside class="hh"></aside>
  {%endfor%}
-
-
-
-
-
-                            {% if mpla.image_galaxie %}
-                            <img src="{{galaxie.image_galaxie.url}}">
-
-                            {% endif %}
-
-
-
-
-
-
 
 
 {% endblock %}

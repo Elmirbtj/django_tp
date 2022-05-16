@@ -7,7 +7,7 @@
 {% load static %}
 body{background:url({% static 'mpla/stars.png' %});background-color:black;}
 </style>
-<form method="post"  enctype="multipart/form-data" action="/mpla/traitement2/">
+<form method="post"  enctype="multipart/form-data" action="/mpla/traitement2/{{id}}">
 
 {% csrf_token %}
 

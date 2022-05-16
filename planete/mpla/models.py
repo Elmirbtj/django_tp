@@ -7,8 +7,8 @@ class Galaxie(models.Model):
     Les_galaxies_spirales='Les galaxies spirales'
     Les_galaxies_lenticulaires ='Les galaxies lenticulaires'
     Les_galaxies_elliptiques='Les galaxies elliptiques'
-    distance = models.CharField(max_length = 100)
-    taille_s = models.CharField(max_length=100, null = True)
+
+    taille_s = models.IntegerField(blank=False, null=True)
     TYPE_CHOICES = [
         (Les_galaxies_spirales, 'Les galaxies spirales'),
         (Les_galaxies_lenticulaires , 'Les galaxies lenticulaires '),
@@ -21,12 +21,12 @@ class Galaxie(models.Model):
         choices=TYPE_CHOICES,
         default=Les_galaxies_spirales,)
     image_galaxie = models.ImageField(upload_to="images")
-
+    resume = models.TextField(null=True, blank=True)
     def __str__(self):
         return  self.nom
 
     def dico(self):
-        return {"nom": self.nom, "date_parution": self.date_de_decouverte, "distance": self.distance, "taille s": self.taille_s, "Type de la galaxie": self.type, "": self.image_galaxie,}
+        return {"nom": self.nom, "date_de_decouverte": self.date_de_decouverte, "taille": self.taille_s, "Type de la galaxie": self.type, "": self.image_galaxie,}
 
 class Pla(models.Model):
 
@@ -34,15 +34,16 @@ class Pla(models.Model):
     nom = models.CharField(max_length = 100)
     date_de_decouverte = models.DateField(blank=True, null = True)
 
-    vitesse = models.CharField(max_length = 100, null = True)
-    taille = models.CharField(max_length = 100,null = True)
+    vitesse = models.IntegerField(blank=False, null=True)
+    taille = models.IntegerField(blank=False, null=True)
     categorie = models.CharField(max_length = 100, )
     image_planete = models.ImageField(upload_to="images", null=True)
+    resume = models.TextField(null=True, blank=True)
     def __str__(self):
-        chaine = f"{self.titre}{self.nom} {self.date_de_decouverte}"
+        chaine = f"{self.nom} {self.date_de_decouverte}"
         return chaine
     def dico(self):
-        return { "nom" : self.nom, "date_parution" : self.date_de_decouverte }
+        return { "nom" : self.nom, "date_de_decouverte" : self.date_de_decouverte , "vitesse" :self.vitesse,}
 
 
 

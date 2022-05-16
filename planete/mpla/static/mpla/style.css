@@ -78,14 +78,14 @@ text-align : center;
 
 
 .nav-bar {
-  float: right;
+  float: left;
 }
 
 .nav-bar .ul2 .li2 {
   float: left;
   list-style-type: none;
   padding: 10px;
-  margin: 0 5px;
+  margin: 0 10px;
   background-color: tomato;
   font-size: 14px;
   border-radius: 5px;
@@ -141,20 +141,12 @@ img {
 
 
 
-.fond {
-	padding: 1em;
-	background-image: url(pp.jpg);
-	background-repeat: no-repeat;
-    background-size: cover;
 
-
-
-}
 
 
 
 input[type=submit],button{
-    background:#2f4a28;
+    background:#404040;
     font-family:system-ui,arial;
 }
 
@@ -172,7 +164,7 @@ form{
     margin-top:75px;
     width:65vw;
     border-radius:5px;
-    box-shadow:1px 1px 1px 1px #558549;
+    box-shadow:1px 1px 1px 1px #A9A9A9;
 
 }
 
