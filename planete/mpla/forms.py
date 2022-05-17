@@ -16,7 +16,7 @@ class GalaxieForm(ModelForm):
             'nom' : _('Nom') ,
             'date_de_decouverte' : _('Date de decouverte'),
 
-            'taile_s': _('Taille de la galaxie'),
+            'taille_s': _('Taille de la galaxie(km)'),
             'type': _('Type de la galaxie'),
             'image_galaxie': '',
             'resume': _('resume'),

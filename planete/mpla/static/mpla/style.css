@@ -11,12 +11,12 @@ html, body{
 
 
 .entetesite{
-	#background-color: black;
-	#background-image: url(pp.jpg);
+
 	background: #3E454C;
-	background-repeat: no-repeat;
 	padding : 50px;
     background-size: 100%;
+
+
 
 }
 
@@ -25,26 +25,7 @@ html, body{
     font-family : Raleway, sans-serif;
 	width : 400px;
 	text-align: center;
-	#background-color: antiquewhite;
-	#opacity: 0.8;
 	margin : 0px auto 0px;
-}
-
-.entetesite nav a{
-    display : inline-block;
-    width : calc( 100% / 3 - 10px);
-    margin-right : 5px;
-    background-color: blue;
-    text-align : center;
-    text-decoration : none;
-    color : darkblue;
-    font-size : 1.2em;
-}
-.entetesite nav a:first-child{
-margin-left : 2.5px;
-}
-.entetesite nav a:last-child{
-margin-right : 0px;
 }
 
 h1 {
@@ -53,11 +34,12 @@ text-align : center;
 
 
 
-.pcimg {
+.img1 {
 	display: block;
 	border: 0;
   margin: auto;
 	width: 60%;
+	height:300px;
 
 
 }
@@ -67,25 +49,21 @@ text-align : center;
   width: 75vw;
   margin: 0 auto;
   margin-top: 10px;
-  position: fixed;
 
-}
 
-.nav {
-  width: 100%;
 }
 
 
 
-.nav-bar {
-  float: left;
-}
+
+
+
 
 .nav-bar .ul2 .li2 {
-  float: left;
+  float: right;
   list-style-type: none;
   padding: 10px;
-  margin: 0 10px;
+  margin: 0 100px;
   background-color: tomato;
   font-size: 14px;
   border-radius: 5px;
@@ -108,12 +86,6 @@ background: white;
 
 
 
-img {
-  display: inline-block;
-  width:150px;
-  height: 200px;
-  border: 1px solid grey;
-}
 .flexible {
   display: flex;
   align-items: center;
@@ -125,13 +97,14 @@ img {
 
 
   .hh {
-    width: 80%;
+    width: 60%;
     text-align: center;
     border-bottom: 1px solid #fff;
     line-height: 0.1em;
     margin: -100px 0 0px;
-    margin-left: 10%;
+    margin-left: 2%;
     color:white;
+    margin-bottom: 5%;
 
 
 
@@ -162,7 +135,7 @@ form{
     flex-direction:column;
     align-items:center;
     margin-top:75px;
-    width:65vw;
+    width:65%;
     border-radius:5px;
     box-shadow:1px 1px 1px 1px #A9A9A9;
 
@@ -184,7 +157,7 @@ list-style-type:none;
   margin-top:50px;
     flex-direction:column;
     align-items:center;
-    margin-top:10px;
+    margin-top:25px;
     width:50vw;
     border-radius:5px;
     box-shadow:1px 1px 1px 1px #A9A9A9;
@@ -193,12 +166,15 @@ list-style-type:none;
 
 .ul1 > .li1{
   margin-top:50px;
+
     list-style-type:none;
     display:flex;
     flex-direction:column;
     align-items:center;
+    padding:3px;
 
 }
+
 
 .main{display:flex;
 justify-content:center;
@@ -216,4 +192,9 @@ flex-direction:column;
       flex-direction: column;
       margin: 10px;
     }
+}
+
+.planeteimg{
+
+ float: right;
 }

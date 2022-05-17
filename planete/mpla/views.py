@@ -27,10 +27,6 @@ def delete(request, id):
     galaxie.delete()
     return HttpResponseRedirect("/mpla/home")
 
-def Galaxie(request):
-    liste = list(models.Galaxie.objects.all())
-    return render(request, 'mpla/Galaxie.html', {'liste': liste})
-
 def home(request):
     liste = list(models.Galaxie.objects.all())
 
@@ -60,13 +56,13 @@ def traitementupdate(request, id):
         galaxie.save()
         return HttpResponseRedirect("/mpla/ajout")
     else:
-        return render(request, "mpla/update.html", {"form": gform, "id": id})
+        return render(request, "mpla/update.html", {"gform": gform, "id": id})
 
 
 def update(request, id):
     galaxie = models.Galaxie.objects.get(pk=id)
     gform = GalaxieForm(galaxie.dico())
-    return render(request, "mpla/update.html", {"form": gform,"id":id})
+    return render(request, "mpla/update.html", {"gform": gform,"id":id})
 
 
 
@@ -100,7 +96,7 @@ def traitement2(request, id):
         planete.save()
         return HttpResponseRedirect("/mpla/affiche/"+ str(id) )
     else:
-        return render(request,"mpla/planete.html",{"form": pform})
+        return render(request,"mpla/planete.html",{"pform": pform})
 
 def delete2(request, id):
 
@@ -117,7 +113,7 @@ def traitementupdate2(request, id):
         pla=pform.save(commit=False)
         pla.id=id
         pla.save()
-        return HttpResponseRedirect(f"/mpla/affiche/{models.Pla.objects.get(pk=id).galaxie_id}")
+        return HttpResponseRedirect(f"/mpla/affiche")
     else:
         return render(request, "mpla/update2.html", {"pform": pform, "id": id})
 

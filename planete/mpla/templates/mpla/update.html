@@ -5,11 +5,11 @@
 {% load static %}
 body{background:url({% static 'mpla/stars.png' %});background-color:black;}
 </style>
-    <form method="post" action="/mpla/traitementupdate/{{id}}">
-        {% csrf_token %}
-     {{ form.as_p }}
+    <form method="post" action="/mpla/traitementupdate/{{id}}/">
+    {% csrf_token %}
+    {{ gform.as_p }}
 
-        <input type="submit" value="envoyer les données"\>
+        <input type="submit" value="envoyer les données">
     </form>
 
 {% endblock %}

@@ -22,13 +22,13 @@ body{background:url({% static 'mpla/stars.png' %});background-color:black;}
 
 <ul class="ul1">
 <h1>   {{galaxie.nom}}</h1>
-<img src="{{galaxie.image_galaxie.url}} " class="pcimg">
+<img src="{{galaxie.image_galaxie.url}} " class="img1">
 {% endif %}
 
 
     <li class="li1">
-     type: {{galaxie.type}} <br> Taille :{{galaxie.taille_s}}<br>Date de decouverte :{{galaxie.date_de_decouverte|date:"d/m/Y"}}
-    <br>Resume: {{l.resume}}
+     type: {{galaxie.type}} <br> Taille :{{galaxie.taille_s}}<br>Date de decouverte :{{galaxie.date_de_decouverte|date:"d/m/Y"}}<br>
+    <br>Resume: {{galaxie.resume}}
 
 
 
@@ -57,7 +57,7 @@ body{background:url({% static 'mpla/stars.png' %});background-color:black;}
         <div class=flexible>
           <div>
           <h2>{{l.nom}}</h2>
-             <br> {{l.date_de_decouverte|date:"d/m/Y"}}
+             <br>Decouverte :{{l.date_de_decouverte}}
               <br>
               Vitesse de rotation: {{l.vitesse}}
              <br>
